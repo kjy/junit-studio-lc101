@@ -8,42 +8,69 @@ import static org.junit.Assert.*;
 public class BalancedBracketsTest {
 
 //    //TODO: add tests here
-//    @Test
-//    public void emptyTest() {
-//        assertEquals(true, true);
-//    }
-
+    @Test
+    public void emptyTest() {
+        assertEquals(true, true);
+    }
 
     @Test
     public void onlyBracketsReturnsTrue() {
-        assertTrue(BalancedBrackets.hasBalancedBrackets("[Launchcode]"));
+        assertTrue(BalancedBrackets.hasBalancedBrackets("[]"));
     }
 
     @Test
-    public void extraBracketReturnsFalse() {
-        assertFalse(BalancedBrackets.hasBalancedBrackets("[Launchcode]]"));
+    public void twoBracketReturnsTrue() {
+        assertTrue(BalancedBrackets.hasBalancedBrackets("[][]"));
     }
 
     @Test
-    public void noBracketsReturnsTrue() {
+    public void bracketsWithinBracketsReturnsTrue() {
+        assertTrue(BalancedBrackets.hasBalancedBrackets("[[]]"));
+    }
+
+    @Test
+    public void bracketsOfBracketsWithinBracketsReturnsTrue() {
+        assertTrue(BalancedBrackets.hasBalancedBrackets("[[]][]"));
+    }
+
+    @Test
+    public void tripleBracketsWithinBracketsReturnsTrue() {
+        assertTrue(BalancedBrackets.hasBalancedBrackets("[[[]]]"));
+    }
+    @Test
+    public void twoTripleBracketsWithinBracketsReturnsTrue() {
+        assertTrue(BalancedBrackets.hasBalancedBrackets("[[[][]]]"));
+    }
+
+    @Test
+    public void emptyStringReturnsTrue() {
         assertTrue(BalancedBrackets.hasBalancedBrackets(""));
     }
 
+
     @Test
-    public void backwardBracketsReturnsFalse() {
-        assertFalse(BalancedBrackets.hasBalancedBrackets("][["));
+    public void bracketsWithPizzaStringReturnsTrue() {
+        assertTrue(BalancedBrackets.hasBalancedBrackets("[pizza]"));
     }
 
+    @Test
+    public void onlyOpenBracketReturnsFalse() {
+        assertFalse(BalancedBrackets.hasBalancedBrackets("["));
+    }
 
+    @Test
+    public void onlyCloseBracketReturnsFalse() {
+        assertFalse(BalancedBrackets.hasBalancedBrackets("]"));
+    }
 
+    @Test
+    public void mismatchedBracketReturnsFalse() {
+        assertFalse(BalancedBrackets.hasBalancedBrackets("]["));
+    }
 
-
-
-
-
-
-
-
-
+    @Test
+    public void unequalBracketsWithPizzaReturnsFalse() {
+        assertFalse(BalancedBrackets.hasBalancedBrackets("[pizza[]"));
+    }
 
 }
